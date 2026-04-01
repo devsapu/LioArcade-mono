@@ -3,13 +3,20 @@ import type { HelloResponse } from "@lioarcade/types";
 
 export interface ApiClientOptions {
   baseUrl: string;
+  getAccessToken?: () => string | null | undefined;
 }
 
 export class ApiClient {
   constructor(private readonly options: ApiClientOptions) {}
 
   async get<T>(path: string): Promise<T> {
-    const response = await fetch(`${this.options.baseUrl}${path}`);
+    const headers = new Headers();
+    const token = this.options.getAccessToken?.();
+    if (token) {
+      headers.set("Authorization", `Bearer ${token}`);
+    }
+
+    const response = await fetch(`${this.options.baseUrl}${path}`, { headers });
     if (!response.ok) {
       throw new Error(`GET ${path} failed with ${response.status}`);
     }
@@ -17,8 +24,11 @@ export class ApiClient {
   }
 }
 
-export function createApiClient(baseUrl: string): ApiClient {
-  return new ApiClient({ baseUrl });
+export function createApiClient(
+  baseUrl: string,
+  options?: Pick<ApiClientOptions, "getAccessToken">
+): ApiClient {
+  return new ApiClient({ baseUrl, ...options });
 }
 
 export async function getHello(baseUrl: string): Promise<HelloResponse> {

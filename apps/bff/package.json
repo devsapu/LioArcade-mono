@@ -10,9 +10,10 @@
     "typecheck": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
-    "@lioarcade/types": "workspace:*",
     "@fastify/cors": "^11.0.0",
-    "fastify": "^5.0.0"
+    "@lioarcade/types": "workspace:*",
+    "fastify": "^5.0.0",
+    "jose": "^6.2.2"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",

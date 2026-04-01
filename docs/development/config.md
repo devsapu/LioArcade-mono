@@ -27,9 +27,12 @@ This document defines how configuration and environment variables are managed ac
 
 - Web:
   - `NEXT_PUBLIC_BFF_URL` (optional local fallback exists)
+  - `NEXT_PUBLIC_FUSIONAUTH_URL` (FusionAuth base URL for OAuth redirects)
+  - `NEXT_PUBLIC_FUSIONAUTH_CLIENT_ID` (FusionAuth application Client Id)
 - BFF:
   - `HOST` (default `0.0.0.0`)
   - `PORT` (default `4000`)
+  - `FUSIONAUTH_JWKS_URL` (JWKS URL for JWT verification; defaults to `http://localhost:9011/.well-known/jwks.json` if unset)
 - Mobile:
   - No env pipeline yet (currently uses a local hardcoded BFF URL in `App.tsx`)
 

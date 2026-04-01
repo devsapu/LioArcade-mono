@@ -2,12 +2,17 @@ import Fastify from "fastify";
 import cors from "@fastify/cors";
 import { healthRoute } from "./routes/health.route.js";
 import { helloRoute } from "./routes/hello.route.js";
+import { protectedRoute } from "./routes/protected.route.js";
 
 const app = Fastify({ logger: true });
-await app.register(cors, { origin: true });
+await app.register(cors, {
+  origin: true,
+  allowedHeaders: ["Authorization", "Content-Type"]
+});
 
 await healthRoute(app);
 await helloRoute(app);
+await protectedRoute(app);
 
 const port = Number(process.env.PORT ?? 4000);
 const host = process.env.HOST ?? "0.0.0.0";

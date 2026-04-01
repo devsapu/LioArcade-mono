@@ -20,3 +20,9 @@
 - `npx pnpm dev:mobile`
 - `npx pnpm dev:bff`
 - `npx pnpm typecheck`
+
+## Environment
+
+- Copy `apps/web/.env.example` to `apps/web/.env.local` for FusionAuth and BFF URLs.
+- Copy `apps/bff/.env.example` to `apps/bff/.env` (optional; defaults match local FusionAuth JWKS).
+- FusionAuth local setup: see `docs/development/fusionauth-setup.md`.

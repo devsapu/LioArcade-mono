@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "LioArcade",
+    "slug": "lioarcade",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "extra": {
+      "eas": {
+        "projectId": "19b98950-72eb-4f05-8610-852c5184bc6f"
+      }
+    }
+  }
+}

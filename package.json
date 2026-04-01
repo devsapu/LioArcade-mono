@@ -1,0 +1,15 @@
+{
+  "name": "lioarcade-mono",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.33.0",
+  "scripts": {
+    "dev": "pnpm -r --parallel --filter \"./apps/*\" dev",
+    "dev:web": "pnpm --filter @lioarcade/web dev",
+    "dev:mobile": "pnpm --filter @lioarcade/mobile dev",
+    "dev:bff": "pnpm --filter @lioarcade/bff dev",
+    "build": "pnpm -r --filter \"./apps/*\" --filter \"./packages/*\" build",
+    "typecheck": "pnpm -r --filter \"./apps/*\" --filter \"./packages/*\" typecheck",
+    "postinstall": "pnpm -r --filter \"./packages/*\" build"
+  }
+}

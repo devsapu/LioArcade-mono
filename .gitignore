@@ -1,0 +1,13 @@
+node_modules
+.pnpm-store
+dist
+.next
+.expo
+coverage
+*.log
+*.tsbuildinfo
+.DS_Store
+.env
+.env.*
+!.env.example
+apps/mobile/.expo-shared

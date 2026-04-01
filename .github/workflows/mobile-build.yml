@@ -1,0 +1,40 @@
+name: Mobile Build (EAS)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  eas-android-preview:
+    name: Build Android Preview
+    runs-on: ubuntu-latest
+    env:
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install EAS CLI
+        run: npm install -g eas-cli
+
+      - name: Verify Expo authentication
+        run: eas whoami
+        working-directory: apps/mobile
+
+      - name: Trigger EAS Android preview build
+        run: npx eas build --platform android --profile preview --non-interactive
+        working-directory: apps/mobile

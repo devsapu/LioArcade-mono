@@ -29,6 +29,7 @@ This document defines how configuration and environment variables are managed ac
   - `NEXT_PUBLIC_BFF_URL` (optional local fallback exists)
   - `NEXT_PUBLIC_FUSIONAUTH_URL` (FusionAuth base URL for OAuth redirects)
   - `NEXT_PUBLIC_FUSIONAUTH_CLIENT_ID` (FusionAuth application Client Id)
+  - `NEXT_PUBLIC_FUSIONAUTH_REDIRECT_URI` (optional; must match FusionAuth **Authorized redirect URLs** exactly)
 - BFF:
   - `HOST` (default `0.0.0.0`)
   - `PORT` (default `4000`)
